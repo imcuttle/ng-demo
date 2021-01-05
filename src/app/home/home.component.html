@@ -1,0 +1,17 @@
+
+
+<h1>TodoList</h1>
+
+<input #inputElement type="text" [(ngModel)]="input" placeholder="输入todo" />
+<button [disabled]="!input.trim()" (click)="appService.unshiftTodo({ content: input.trim(), done: false }); input = ''; inputElement.focus()">新增</button>
+
+<ul *ngIf="!!list.length">
+  <li *ngFor="let todo of list">
+    <p [class]="todo.done ? 'todo-done' : 'todo-undo'">
+      <input type="checkbox" [checked]="todo.done" (change)="todo.done = $event.target.checked">
+      {{ todo.content }}
+
+      <a routerLink="detail" [queryParams]="{ id: todo.id }" style="margin-left: 10px">查看</a>
+    </p>
+  </li>
+</ul>

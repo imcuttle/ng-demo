@@ -1,0 +1,6 @@
+<p [class]="done ? 'todo-done' : 'todo-undo'">
+  <input type="checkbox" [checked]="done" (change)="todo.done = $event.target.checked">
+  {{ todo.content }}
+
+  <a routerLink="detail" [queryParams]="{ id: todo.id }" style="margin-left: 10px">查看</a>
+</p>
