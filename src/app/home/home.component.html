@@ -7,11 +7,8 @@
 
 <ul *ngIf="!!list.length">
   <li *ngFor="let todo of list">
-    <p [class]="todo.done ? 'todo-done' : 'todo-undo'">
-      <input type="checkbox" [checked]="todo.done" (change)="todo.done = $event.target.checked">
-      {{ todo.content }}
-
+    <app-comp-todo [content]="todo.content" [(done)]="todo.done">
       <a routerLink="detail" [queryParams]="{ id: todo.id }" style="margin-left: 10px">查看</a>
-    </p>
+    </app-comp-todo>
   </li>
 </ul>
